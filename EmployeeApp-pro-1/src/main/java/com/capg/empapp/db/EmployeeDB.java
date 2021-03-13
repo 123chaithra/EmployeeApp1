@@ -1,21 +1,21 @@
 package com.capg.empapp.db;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.capg.empapp.dto.Employee;
 
 public class EmployeeDB {
 	// Employee cannot be resolved to a type
-	public static Employee employees[]  = new Employee[100];
-	public static Employee salarys[]=new Employee[100];
-	public static Employee salaryRange[]=new Employee[100];
+	public static ArrayList<Employee> employees=new ArrayList<Employee>();
+	public static ArrayList<Employee> salarys=new ArrayList<Employee>();
+	public static ArrayList<Employee> salaryRange=new ArrayList<Employee>();
 	
-	public static int count = 0;
-	
+	public static int count;
 	static {
 		
-		employees[count++] = 	new Employee(101, "ramesh", 8, 10000);
-		employees[count++] = 	new Employee(102, "suresh", 2, 17000);
-		employees[count++] = 	new Employee(103, "rakesh", 1, 20000);
-		employees[count++] = 	new Employee(104, "lokesh", 5, 7000);
+		employees.add(new Employee(101, "ramesh", 8, 10000));
+		employees.add(new Employee(102, "suresh", 2, 17000));
+		employees.add(new Employee(103, "rakesh", 1, 20000));
+		employees.add(new Employee(104, "lokesh", 5, 7000));
 		
 		}
 		
@@ -23,8 +23,8 @@ public class EmployeeDB {
 	public static boolean addEmployee(Employee e)
 	{
 		
-		employees[count++] = e;
-	
+		employees.add(e);
+		count=employees.size();
 		return true;
 	}
 	
@@ -33,48 +33,44 @@ public class EmployeeDB {
 		return count;
 	}
 	public static boolean editExpByEmployeeId(int id,int empNewExp) {
-		for(int i=0;i<count;i++) {
-			if(employees[i].getEmployeeId()==id) {
-				employees[i].setExp(empNewExp);
+		for(Employee employee : employees) {
+			if(employee.getEmployeeId()==id) {
+				employee.setExp(empNewExp);
 				return true;
 			}
 		}
 		return false;
 	}
 	public static boolean editSalaryByEmployeeID(int id,int empNewSalary) {
-		for(int i=0;i<count;i++) {
-			if(employees[i].getEmployeeId()==id) {
-				employees[i].setSalary(empNewSalary);
+		for(Employee employee : employees) {
+			if(employee.getEmployeeId()==id) {
+				employee.setSalary(empNewSalary);
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public static Employee[] getEmployeeBySalary(int salary) {
-		int j=0;
-		for(int i=0;i<count;i++) {
-			if(employees[i].getSalary()==salary) {
-				salarys[j]=employees[i];
-				j+=1;
-				
+	public static ArrayList<Employee> getEmployeeBySalary(int salary) {
+		salarys.clear();
+		for (Employee employee : employees) {
+			if(employee.getSalary()==salary) {
+				salarys.add(employee);
 			}
-				
+
 		}
-		
-		return salarys;
+			return salarys;
 	}
 	
-	public static Employee[] getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
-		int j=0;
-		for(int i=0;i<count;i++) {
-			if(employees[i].getSalary()>=salaryRangeMin && employees[i].getSalary()<=salaryRangeMax)
-			{
-				salaryRange[j]=employees[i];
-			j+=1;
-			
-	
+	public static ArrayList<Employee> getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
+		salaryRange.clear();
+		for (Employee employee : employees) {
+			if(employee.getSalary()>=salaryRangeMin && employee.getSalary()<=salaryRangeMax) {
+				salaryRange.add(employee);
+				
+				
 			}
+
 		}
 		
 		return salaryRange;

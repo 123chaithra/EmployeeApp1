@@ -1,5 +1,5 @@
 package com.capg.empapp.main;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.capg.empapp.db.EmployeeDB;
@@ -66,26 +66,27 @@ public class EmpMainClass {
 				break;
 			case 2:
 				
-				Employee arr[] = app.empService.getAllEmployees();
-				int count = EmployeeDB.count;  // not the code
-				System.out.println("  --->>  count in main "+count);
-				for (int i = 0; i < count; i++) {
-					System.out.println(arr[i]);
+				ArrayList<Employee> arr = app.empService.getAllEmployees();
+				
+				for (Employee employee : arr) {
+					System.out.println(employee);
 					System.out.println(" ========================================================");
 				}
 				break;
 			case 3:
 				System.out.println("Enter Employee Salary ");
 				int empSalary1 = Integer.parseInt(sc.nextLine());
-				int countS = EmployeeDB.count;
-				System.out.println("count value:"+countS);
-				Employee salarys[]=app.empService.getEmployeeBySalary(empSalary1);
+				
+				ArrayList<Employee> salarys=app.empService.getEmployeeBySalary(empSalary1);
+				if(salarys.size()>0) {
 				System.out.println("The Employees with salary of "+empSalary1);
-				for (int i = 0; i < countS; i++) {
-					System.out.println(salarys[i]);
+				for (Employee salary:salarys) {
+					System.out.println(salary);
 					System.out.println(" ========================================================");
 				}
-				
+				}
+				else
+					System.out.println("The Entered salary was not matched with any Employee's salary");
 				break;
 			case 4:
 				System.out.println("Enter Employee Salary Min");
@@ -93,14 +94,18 @@ public class EmpMainClass {
 				System.out.println("Enter Employee Salary Max");
 				int empSalarymax = Integer.parseInt(sc.nextLine());
 				
-				int countSR = EmployeeDB.count;
-				Employee salarysRange[]=app.empService.getEmployessBySalaryRange(empSalarymin, empSalarymax);
+				
+				
+				ArrayList<Employee> salarysRange=app.empService.getEmployessBySalaryRange(empSalarymin, empSalarymax);
+				if(salarysRange.size()>0) {
 				System.out.println("The Employees with in  salary Range  of"+empSalarymin+" to "+empSalarymax);
-				for (int i = 0; i < countSR; i++) {
-					System.out.println(salarysRange[i]);
+				for (Employee salR:salarysRange) {
+					System.out.println(salR);
 					System.out.println(" ========================================================");
 				}
-				
+				}
+				else
+					System.out.println("There is no salary in range ");
 				break;
 			case 5:
 				System.out.println("Enter Employee Id ");

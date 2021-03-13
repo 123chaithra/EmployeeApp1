@@ -1,4 +1,5 @@
  package com.capg.empapp.service;
+import java.util.ArrayList;
 
 import com.capg.empapp.dao.EmployeeDAOImpl;
 import com.capg.empapp.dao.IEmployeeDAO;
@@ -27,7 +28,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		
 	}
 
-	public Employee[] getAllEmployees() {
+	public ArrayList<Employee> getAllEmployees() {
 
 		return dao.getAllEmployees();
 	}
@@ -51,12 +52,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		else return dao.editExpByEmployeeId(id,empNewExp);
 	}
 
-	public Employee[] getEmployeeBySalary(int salary) {
+	public ArrayList<Employee> getEmployeeBySalary(int salary) {
 		// TODO Auto-generated method stub
 		return dao.getEmployeeBySalary(salary);
 	}
 
-	public Employee[] getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
+	public ArrayList<Employee> getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
 		// TODO Auto-generated method stub
 		return dao.getEmployessBySalaryRange(salaryRangeMin, salaryRangeMax);
 	}

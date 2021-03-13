@@ -1,5 +1,7 @@
 package com.capg.empapp.dao;
 
+import java.util.ArrayList;
+
 import com.capg.empapp.db.EmployeeDB;
 import com.capg.empapp.dto.Employee;
 import com.capg.empapp.execptions.InvalidEmployeeIdExcption;
@@ -14,7 +16,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 		return EmployeeDB.addEmployee(e);
 	}
 
-	public Employee[] getAllEmployees() {
+	public ArrayList<Employee> getAllEmployees() {
 
 		return EmployeeDB.employees;
 	}
@@ -34,12 +36,12 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 
 	
 
-	public Employee[] getEmployeeBySalary(int salary) {
+	public ArrayList<Employee> getEmployeeBySalary(int salary) {
 		// TODO Auto-generated method stub
 		return EmployeeDB.getEmployeeBySalary(salary);
 	}
 
-	public Employee[] getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
+	public ArrayList<Employee> getEmployessBySalaryRange(int salaryRangeMin, int salaryRangeMax) {
 		// TODO Auto-generated method stub
 		return EmployeeDB.getEmployessBySalaryRange(salaryRangeMin, salaryRangeMax);
 	}

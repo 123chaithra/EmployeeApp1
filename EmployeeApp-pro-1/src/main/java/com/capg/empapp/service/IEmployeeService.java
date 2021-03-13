@@ -1,5 +1,7 @@
 package com.capg.empapp.service;
 
+import java.util.ArrayList;
+
 import com.capg.empapp.dto.Employee;
 import com.capg.empapp.execptions.InvalidEmployeeIdExcption;
 import com.capg.empapp.execptions.WrongSalaryException;
@@ -12,10 +14,10 @@ public interface IEmployeeService {
 	 
 	 public boolean editExpByEmployeeId(int id,int empNewExp)throws InvalidEmployeeIdExcption;
 	 
-	 public Employee[] getAllEmployees();
+	 public ArrayList<Employee> getAllEmployees();
 	 
-	 public Employee[] getEmployeeBySalary(int salary);
+	 public ArrayList<Employee> getEmployeeBySalary(int salary);
 	 
-	 public Employee[] getEmployessBySalaryRange(int salaryRangeMin,int salaryRangeMax);
+	 public ArrayList<Employee> getEmployessBySalaryRange(int salaryRangeMin,int salaryRangeMax);
 
 }
